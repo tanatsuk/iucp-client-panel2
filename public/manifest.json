@@ -14,7 +14,8 @@
   "content_scripts": [
     {
       "matches": ["http://43.207.188.141:8080/*"],
-      "js": ["jquery-3.7.1.js", "content-script.js"]
+      "css": ["jquery-ui-1.13.2/jquery-ui.min.css", "content-script.css"],
+      "js": ["jquery-ui-1.13.2/external/jquery/jquery.js", "jquery-ui-1.13.2/jquery-ui.min.js", "content-script.js"]
     }
   ]
 }
