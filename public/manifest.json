@@ -9,5 +9,12 @@
     "browser_action": {
         "default_icon": "logo512.png",
         "default_popup": "popup.html"
+    },
+
+  "content_scripts": [
+    {
+      "matches": ["http://43.207.188.141:8080/*"],
+      "js": ["jquery-3.7.1.js", "content-script.js"]
     }
+  ]
 }
