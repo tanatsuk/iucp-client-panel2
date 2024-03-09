@@ -1,1 +1,4 @@
-#iucp-modal { width: 150px; height: 150px; padding: 0.5em; z-index: 32}
+#iucp-modal {width: 150px; height: 300px; padding: 0.5em; z-index: 32;}
+/* #iucp-main {overflow: scroll} */
+/* #iucp-input-row {white-spave: nowrap;} */
+#iucp-input {width: 60px;}

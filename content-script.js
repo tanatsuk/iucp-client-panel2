@@ -1,14 +1,20 @@
 $("#main").prepend(
   `<div id=iucp-modal class=ui-widget-content>
     <p>IUCP Client Panel</p>
-    <div id=they-said></div>
+    <div id=iucp-main>
+      <div id=they-said></div>
+      <div id=iucp-input-row>
+        <input id=iucp-input type=text></input>
+        <button id=iucp-send>send</button>
+      </div>
+    </div>
   </div>`);
 $( function() {$( "#iucp-modal" ).draggable();});
 
 $("body").append(
   `<script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-import { getDatabase, onValue, ref } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+import { getDatabase, onValue, push, ref, set } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "foo",
@@ -30,4 +36,11 @@ onValue(myRef, (snapshot) => {
     document.getElementById("they-said").innerHTML += "<p>" + entry + "</p>";
   });
 });
+
+document.getElementById("iucp-send").onclick = function() {
+  const i = document.getElementById("iucp-input");
+  const newElement = push(myRef);
+  set(newElement, i.value);
+  i.value = "";
+};
   </script>`);
