@@ -2,19 +2,28 @@ $("#main").prepend("<div id=iucp-modal class=ui-widget-content><p>IUCP Client Pa
 $( function() {$( "#iucp-modal" ).draggable();});
 
 $("body").append(
-  `<script type=module>
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js';
+  `<script type="module">
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+import { getDatabase } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+
+// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "foo",
-  authDomain: "chantokun-a3dac.firebaseapp.com",
-  databaseURL: "https://chantokun-a3dac-default-rtdb.firebaseio.com",
-  projectId: "chantokun-a3dac",
-  storageBucket: "chantokun-a3dac.appspot.com",
-  messagingSenderId: "1040075913299",
-  appId: "1:1040075913299:web:616cec5b063ffe640daea6",
-  measurementId: "G-CEEZFEPYM2"
+  authDomain: "iucp-ea54f.firebaseapp.com",
+  databaseURL: "https://iucp-ea54f-default-rtdb.firebaseio.com",
+  projectId: "iucp-ea54f",
+  storageBucket: "iucp-ea54f.appspot.com",
+  messagingSenderId: "5088086042",
+  appId: "1:5088086042:web:976e33462380a7a2a729a3"
 };
+
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
 console.log("loaded firebase");
 document.getElementById("they-said").innerHTML = "loaded firebase";
   </script>`);
