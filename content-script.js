@@ -1,15 +1,15 @@
-$("#main").prepend("<div id=iucp-modal class=ui-widget-content><p>IUCP Client Panel</p><p id=they-said>You can drag me around</p></div>");
+$("#main").prepend(
+  `<div id=iucp-modal class=ui-widget-content>
+    <p>IUCP Client Panel</p>
+    <div id=they-said></div>
+  </div>`);
 $( function() {$( "#iucp-modal" ).draggable();});
 
 $("body").append(
   `<script type="module">
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-import { getDatabase } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+import { getDatabase, onValue, ref } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "foo",
   authDomain: "iucp-ea54f.firebaseapp.com",
@@ -20,10 +20,14 @@ const firebaseConfig = {
   appId: "1:5088086042:web:976e33462380a7a2a729a3"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-
-console.log("loaded firebase");
-document.getElementById("they-said").innerHTML = "loaded firebase";
+const myRef = ref(database, "iucp");
+onValue(myRef, (snapshot) => {
+  document.getElementById("they-said").innerHTML = "";
+  snapshot.forEach((a) => {
+    const entry = a.val();
+    document.getElementById("they-said").innerHTML += "<p>" + entry + "</p>";
+  });
+});
   </script>`);
