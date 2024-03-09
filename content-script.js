@@ -29,6 +29,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const myRef = ref(database, "iucp");
+
 onValue(myRef, (snapshot) => {
   document.getElementById("they-said").innerHTML = "";
   snapshot.forEach((a) => {

@@ -1,1 +1,6 @@
-later
+```
+$ cat content-script.js
+...
+  apiKey: "foo", <- you must replace this with a real key
+...
+``` 
